@@ -1,23 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, lazy, Suspense } from "react";
+import { Provider } from "react-redux";
+import configureStore from "./components/ReduxSaga/store";
+import "./App.css";
+import CallApplyBindClosure from "./components/ES6/CallApplyBindClosure";
+import PureComponents from "./components/PureComponent/PureComponents";
+import HOC from "./components/HOC/OneButton";
+import MemoizeFunction from "./components/MemoizeFunction/Container";
+import Hook from "./components/Hook/Hook";
+import ErrorBoundaryFunction from "./components/ErrorBoundary/ErrorBoundaryFunction";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import Generator from "./components/ES6/Generator";
+import TestView from "./components/ReduxSaga/TestView";
+//import LazyComponent from './components/Lazy/LazyComponent';
+const LazyComponent = lazy(() => import("./components/Lazy/LazyComponent"));
+const store = configureStore();
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <CallApplyBindClosure/> */}
+        {/* <PureComponents/> */}
+        {/* <HOC disable/> */}
+        {/* <MemoizeFunction/> */}
+
+        {/* <Suspense fallback={<div>Loading....</div>}>        
+        <LazyComponent/>
+        </Suspense> */}
+
+        {/* <Hook/> */}
+
+        {/* <ErrorBoundary>
+          <ErrorBoundaryFunction testName="error" />
+        </ErrorBoundary> */}
+
+        {/* <Generator/> */}
+
+        <Provider store={store}>
+          <TestView />
+        </Provider>
       </header>
     </div>
   );
